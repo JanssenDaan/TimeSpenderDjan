@@ -49,9 +49,9 @@
             this.lblWhatDoing.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblWhatDoing.Location = new System.Drawing.Point(306, 9);
             this.lblWhatDoing.Name = "lblWhatDoing";
-            this.lblWhatDoing.Size = new System.Drawing.Size(217, 24);
+            this.lblWhatDoing.Size = new System.Drawing.Size(237, 24);
             this.lblWhatDoing.TabIndex = 0;
-            this.lblWhatDoing.Text = "Phineas, wat dooeee je?";
+            this.lblWhatDoing.Text = " Phineas, Wat doeeeee je?";
             // 
             // lbxWhatDidIDo
             // 

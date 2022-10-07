@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,7 @@ namespace TimeSpenderDjan
 {
     public partial class Form1 : Form
     {
-        public Form1 form;
+        public static Form1 form;
         public ObservableCollection<What> DoingList = new ObservableCollection<What>();
         public new What w = new What();
         public int tmr = 3;
@@ -22,8 +23,7 @@ namespace TimeSpenderDjan
         {
             InitializeComponent();
             form = this;
-            
-            
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -34,6 +34,13 @@ namespace TimeSpenderDjan
             cbxChoose.Items.Add("Op de WC");
             cbxChoose.Items.Add("Programmeren in C#");
             cbxChoose.Items.Add("Capri sun drinken");
+            tmrPopup.Interval = 1000;
+            string x = File.ReadAllText("x.txt");
+            DoingList = Newtonsoft.Json.JsonConvert.DeserializeObject<ObservableCollection<What>>(x);
+            foreach (What what in DoingList)
+            {
+                lbxWhatDidIDo.Items.Add(what);
+            }
         }
 
         private void tmrColor_Tick(object sender, EventArgs e)
@@ -64,9 +71,9 @@ namespace TimeSpenderDjan
             PutListbox();
         }
 
-        public void PutListbox()
+        public async void PutListbox()
         {
-            w = new What { WhatDoing = cbxChoose.Text , text = cbxChoose.Text + w.Time};
+            w = new What { WhatDoing = cbxChoose.Text , text = cbxChoose.Text + " " + w.Time};
 
             DoingList.Add(w);
             lbxWhatDidIDo.Items.Add(w);
@@ -75,6 +82,8 @@ namespace TimeSpenderDjan
             ntfDjan.Visible = true;
             tmr = 3;
             tmrPopup.Start();
+            string Json = Newtonsoft.Json.JsonConvert.SerializeObject(DoingList);
+            File.WriteAllText("x.txt", Json);
         }
 
         private void ntfDjan_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -84,15 +93,11 @@ namespace TimeSpenderDjan
 
         private void tmrPopup_Tick(object sender, EventArgs e)
         {
-            
             if (tmr == 0)
             {
                 this.Show();
-            }
-            else
-            {
                 tmrPopup.Stop();
-                
+                tmr = 3;
             }
             tmr--;
 
