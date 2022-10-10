@@ -77,7 +77,14 @@ namespace TimeSpenderDjan
 
         private void cbxChoose_SelectedIndexChanged(object sender, EventArgs e)
         {
-            PutListbox();
+            if (settings.Status)
+            {
+                PutListbox();
+            }
+            else
+            {
+                MessageBox.Show("Cannot do anything when status is 'OFF'");
+            }
         }
 
         private void cbxChoose_Leave(object sender, EventArgs e)
@@ -94,7 +101,7 @@ namespace TimeSpenderDjan
             this.Hide();
             //this.WindowState = FormWindowState.Minimized;
             ntfDjan.Visible = true;
-            tmr = 3;
+            tmr = settings.tmrPopup;
             tmrPopup.Start();
             string Json = Newtonsoft.Json.JsonConvert.SerializeObject(DoingList);
             File.WriteAllText(settings.FileName + ".txt", Json);
@@ -111,7 +118,7 @@ namespace TimeSpenderDjan
             {
                 this.Show();
                 tmrPopup.Stop();
-                tmr = 3;
+                tmr = settings.tmrPopup;
             }
             tmr--;
              
@@ -133,10 +140,23 @@ namespace TimeSpenderDjan
         {
             FormSettings.Show();
         }
-
         public void CloseForm()
         {
             FormSettings.Hide();
+        }
+        public void StopTimers()
+        {
+            tmrColor.Stop();
+            tmrPopup.Stop();
+        }
+        public void StartTimers()
+        {
+            tmrColor.Start();
+            tmrPopup.Start();
+        }
+        public void ClearItems()
+        {
+            lbxWhatDidIDo.Items.Clear();
         }
     }
 }

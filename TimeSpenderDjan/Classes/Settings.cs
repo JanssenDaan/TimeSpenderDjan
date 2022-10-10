@@ -16,6 +16,9 @@ namespace TimeSpenderDjan.Classes
         public bool CanSave { get; set; }
         public bool CanDelete { get; set; }
         public string FileName { get; set; }
+        public int tmrPopup { get; set; }
+        public int tmrColor { get; set; }
+        public bool Status { get; set; }
         public ObservableCollection<What> Whats = new ObservableCollection<What>();
         public ObservableCollection<Task> Tasks = new ObservableCollection<Task>();
         

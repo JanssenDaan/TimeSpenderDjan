@@ -59,9 +59,9 @@
             // 
             this.lbxWhatDidIDo.DisplayMember = "text";
             this.lbxWhatDidIDo.FormattingEnabled = true;
-            this.lbxWhatDidIDo.Location = new System.Drawing.Point(310, 367);
+            this.lbxWhatDidIDo.Location = new System.Drawing.Point(321, 336);
             this.lbxWhatDidIDo.Name = "lbxWhatDidIDo";
-            this.lbxWhatDidIDo.Size = new System.Drawing.Size(222, 186);
+            this.lbxWhatDidIDo.Size = new System.Drawing.Size(222, 173);
             this.lbxWhatDidIDo.TabIndex = 1;
             // 
             // cbxChoose
@@ -151,6 +151,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pcbSettings)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion
