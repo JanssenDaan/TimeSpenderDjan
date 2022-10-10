@@ -40,6 +40,8 @@
             this.pnl4 = new System.Windows.Forms.Panel();
             this.pnl3 = new System.Windows.Forms.Panel();
             this.ntfDjan = new System.Windows.Forms.NotifyIcon(this.components);
+            this.pcbSettings = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbSettings)).BeginInit();
             this.SuspendLayout();
             // 
             // lblWhatDoing
@@ -116,6 +118,18 @@
             this.ntfDjan.Text = "ntfDjan";
             this.ntfDjan.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ntfDjan_MouseDoubleClick);
             // 
+            // pcbSettings
+            // 
+            this.pcbSettings.BackColor = System.Drawing.Color.Transparent;
+            this.pcbSettings.BackgroundImage = global::TimeSpenderDjan.Properties.Resources.Windows_Settings_app_icon;
+            this.pcbSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pcbSettings.Location = new System.Drawing.Point(678, 3);
+            this.pcbSettings.Name = "pcbSettings";
+            this.pcbSettings.Size = new System.Drawing.Size(53, 40);
+            this.pcbSettings.TabIndex = 6;
+            this.pcbSettings.TabStop = false;
+            this.pcbSettings.Click += new System.EventHandler(this.pcbSettings_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -123,6 +137,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(837, 553);
+            this.Controls.Add(this.pcbSettings);
             this.Controls.Add(this.pnl3);
             this.Controls.Add(this.pnl4);
             this.Controls.Add(this.pnl2);
@@ -133,9 +148,9 @@
             this.Name = "Form1";
             this.Text = " ";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pcbSettings)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
@@ -150,6 +165,7 @@
         private System.Windows.Forms.Panel pnl4;
         private System.Windows.Forms.Panel pnl3;
         private System.Windows.Forms.NotifyIcon ntfDjan;
+        private System.Windows.Forms.PictureBox pcbSettings;
     }
 }
 
