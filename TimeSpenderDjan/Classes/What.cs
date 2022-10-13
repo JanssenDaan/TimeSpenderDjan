@@ -12,7 +12,7 @@ namespace TimeSpenderDjan.Classes
         public string WhatDoing { get; set; }
 
         public string text { get; set; }
-
+        public int SecondsPassed { get; set; }
         
     }
 }

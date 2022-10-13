@@ -21,6 +21,7 @@ namespace TimeSpenderDjan
         public new What w = new What();
         public int tmr = 3;
         public Classes.Settings settings;
+        public int TimePassed { get; set; }
         public Form1()
         {
             InitializeComponent();
@@ -41,6 +42,8 @@ namespace TimeSpenderDjan
         private void Form1_Load(object sender, EventArgs e)
         {
             tmrColor.Start();
+            TimePassed = 0;
+            tmrSecondsPassed.Start();
 
             foreach (var t in settings.Tasks)
             {
@@ -94,8 +97,8 @@ namespace TimeSpenderDjan
 
         public async void PutListbox()
         {
-            w = new What { WhatDoing = cbxChoose.Text , text = cbxChoose.Text + " " + w.Time};
-
+            w = new What { WhatDoing = cbxChoose.Text , text = cbxChoose.Text + " " + w.Time, SecondsPassed = TimePassed};
+            tmrSecondsPassed.Stop();
             DoingList.Add(w);
             lbxWhatDidIDo.Items.Add(w);
             this.Hide();
@@ -105,11 +108,14 @@ namespace TimeSpenderDjan
             tmrPopup.Start();
             string Json = Newtonsoft.Json.JsonConvert.SerializeObject(DoingList);
             File.WriteAllText(settings.FileName + ".txt", Json);
+            TimePassed = 0;
         }
 
         private void ntfDjan_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             this.Show();
+            TimePassed = 0;
+            tmrSecondsPassed.Start();
         }
 
         private void tmrPopup_Tick(object sender, EventArgs e)
@@ -119,9 +125,10 @@ namespace TimeSpenderDjan
                 this.Show();
                 tmrPopup.Stop();
                 tmr = settings.tmrPopup;
+                TimePassed = 0;
+                tmrSecondsPassed.Start();
             }
             tmr--;
-             
         }
 
         public void ReloadSettings()
@@ -135,7 +142,6 @@ namespace TimeSpenderDjan
                 cbxChoose.Items.Add(t.TaskName);
             }
         }
-
         private void pcbSettings_Click(object sender, EventArgs e)
         {
             FormSettings.Show();
@@ -153,10 +159,18 @@ namespace TimeSpenderDjan
         {
             tmrColor.Start();
             tmrPopup.Start();
+
+            
+            tmrSecondsPassed.Start();
         }
         public void ClearItems()
         {
             lbxWhatDidIDo.Items.Clear();
+        }
+
+        private void tmrSecondsPassed_Tick(object sender, EventArgs e)
+        {
+            TimePassed++;
         }
     }
 }

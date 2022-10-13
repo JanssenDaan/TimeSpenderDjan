@@ -143,7 +143,9 @@ namespace TimeSpenderDjan
 
         private void btnShowCharts_Click(object sender, EventArgs e)
         {
-            ChartsForm c = new ChartsForm();
+            var x = Form1.form.DoingList;
+            var y = Form1.form.settings.Tasks;
+            ChartsForm c = new ChartsForm(x, y);
             c.Show();
         }
 
