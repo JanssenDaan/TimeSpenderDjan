@@ -41,7 +41,6 @@
             this.pnl3 = new System.Windows.Forms.Panel();
             this.ntfDjan = new System.Windows.Forms.NotifyIcon(this.components);
             this.pcbSettings = new System.Windows.Forms.PictureBox();
-            this.tmrSecondsPassed = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pcbSettings)).BeginInit();
             this.SuspendLayout();
             // 
@@ -131,11 +130,6 @@
             this.pcbSettings.TabStop = false;
             this.pcbSettings.Click += new System.EventHandler(this.pcbSettings_Click);
             // 
-            // tmrSecondsPassed
-            // 
-            this.tmrSecondsPassed.Interval = 1000;
-            this.tmrSecondsPassed.Tick += new System.EventHandler(this.tmrSecondsPassed_Tick);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -165,7 +159,6 @@
         private System.Windows.Forms.Label lblWhatDoing;
         private System.Windows.Forms.ListBox lbxWhatDidIDo;
         private System.Windows.Forms.ComboBox cbxChoose;
-        private System.Windows.Forms.Timer tmrColor;
         private System.Windows.Forms.Timer tmrPopup;
         private System.Windows.Forms.Panel pnl1;
         private System.Windows.Forms.Panel pnl2;
@@ -173,7 +166,7 @@
         private System.Windows.Forms.Panel pnl3;
         private System.Windows.Forms.NotifyIcon ntfDjan;
         private System.Windows.Forms.PictureBox pcbSettings;
-        private System.Windows.Forms.Timer tmrSecondsPassed;
+        public System.Windows.Forms.Timer tmrColor;
     }
 }
 

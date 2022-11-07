@@ -13,6 +13,6 @@ namespace TimeSpenderDjan.Classes
 
         public string text { get; set; }
         public int SecondsPassed { get; set; }
-        
+        public bool StandardTask { get; set; }
     }
 }

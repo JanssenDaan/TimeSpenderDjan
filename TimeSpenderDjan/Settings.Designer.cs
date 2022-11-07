@@ -34,6 +34,8 @@
             this.tbxTextFileName = new System.Windows.Forms.TextBox();
             this.cbxCanDelete = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.pcbColorTwo = new System.Windows.Forms.PictureBox();
+            this.pcbColorOne = new System.Windows.Forms.PictureBox();
             this.btnPickColor2 = new System.Windows.Forms.Button();
             this.btnPickColor = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -41,37 +43,41 @@
             this.cdlColor = new System.Windows.Forms.ColorDialog();
             this.lbxTasksSettings = new System.Windows.Forms.ListBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.tbxSelectedTask = new System.Windows.Forms.TextBox();
             this.btnAddTask = new System.Windows.Forms.Button();
             this.btnDeleteTask = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnSaveSettings = new System.Windows.Forms.Button();
-            this.pcbColorOne = new System.Windows.Forms.PictureBox();
-            this.pcbColorTwo = new System.Windows.Forms.PictureBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.btnTurnOff = new System.Windows.Forms.Button();
-            this.btnTurnOn = new System.Windows.Forms.Button();
             this.pcbStatus = new System.Windows.Forms.PictureBox();
+            this.btnTurnOn = new System.Windows.Forms.Button();
+            this.btnTurnOff = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.nudPopup = new System.Windows.Forms.NumericUpDown();
             this.nudColors = new System.Windows.Forms.NumericUpDown();
+            this.nudPopup = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.btnShowCharts = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.rtbExcel = new System.Windows.Forms.RichTextBox();
+            this.btnReadExcel = new System.Windows.Forms.Button();
+            this.btnWriteExcel = new System.Windows.Forms.Button();
+            this.btnShowExcel = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbColorTwo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbColorOne)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pcbColorOne)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcbColorTwo)).BeginInit();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbStatus)).BeginInit();
             this.groupBox6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudPopup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudColors)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPopup)).BeginInit();
             this.groupBox7.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             this.SuspendLayout();
             // 
             // cbxCanSave
@@ -138,6 +144,22 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Colors";
             // 
+            // pcbColorTwo
+            // 
+            this.pcbColorTwo.Location = new System.Drawing.Point(54, 45);
+            this.pcbColorTwo.Name = "pcbColorTwo";
+            this.pcbColorTwo.Size = new System.Drawing.Size(44, 23);
+            this.pcbColorTwo.TabIndex = 5;
+            this.pcbColorTwo.TabStop = false;
+            // 
+            // pcbColorOne
+            // 
+            this.pcbColorOne.Location = new System.Drawing.Point(54, 13);
+            this.pcbColorOne.Name = "pcbColorOne";
+            this.pcbColorOne.Size = new System.Drawing.Size(44, 23);
+            this.pcbColorOne.TabIndex = 4;
+            this.pcbColorOne.TabStop = false;
+            // 
             // btnPickColor2
             // 
             this.btnPickColor2.Location = new System.Drawing.Point(104, 47);
@@ -200,6 +222,16 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Tasks";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(23, 259);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(159, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Delete All Tasks in Mainform";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // tbxSelectedTask
             // 
             this.tbxSelectedTask.Location = new System.Drawing.Point(7, 33);
@@ -247,22 +279,6 @@
             this.btnSaveSettings.UseVisualStyleBackColor = true;
             this.btnSaveSettings.Click += new System.EventHandler(this.btnSaveSettings_Click);
             // 
-            // pcbColorOne
-            // 
-            this.pcbColorOne.Location = new System.Drawing.Point(54, 13);
-            this.pcbColorOne.Name = "pcbColorOne";
-            this.pcbColorOne.Size = new System.Drawing.Size(44, 23);
-            this.pcbColorOne.TabIndex = 4;
-            this.pcbColorOne.TabStop = false;
-            // 
-            // pcbColorTwo
-            // 
-            this.pcbColorTwo.Location = new System.Drawing.Point(54, 45);
-            this.pcbColorTwo.Name = "pcbColorTwo";
-            this.pcbColorTwo.Size = new System.Drawing.Size(44, 23);
-            this.pcbColorTwo.TabIndex = 5;
-            this.pcbColorTwo.TabStop = false;
-            // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.pcbStatus);
@@ -275,15 +291,13 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Status";
             // 
-            // btnTurnOff
+            // pcbStatus
             // 
-            this.btnTurnOff.Location = new System.Drawing.Point(7, 20);
-            this.btnTurnOff.Name = "btnTurnOff";
-            this.btnTurnOff.Size = new System.Drawing.Size(75, 23);
-            this.btnTurnOff.TabIndex = 0;
-            this.btnTurnOff.Text = "Turn Off";
-            this.btnTurnOff.UseVisualStyleBackColor = true;
-            this.btnTurnOff.Click += new System.EventHandler(this.btnTurnOff_Click);
+            this.pcbStatus.Location = new System.Drawing.Point(89, 20);
+            this.pcbStatus.Name = "pcbStatus";
+            this.pcbStatus.Size = new System.Drawing.Size(30, 52);
+            this.pcbStatus.TabIndex = 2;
+            this.pcbStatus.TabStop = false;
             // 
             // btnTurnOn
             // 
@@ -295,13 +309,15 @@
             this.btnTurnOn.UseVisualStyleBackColor = true;
             this.btnTurnOn.Click += new System.EventHandler(this.btnTurnOn_Click);
             // 
-            // pcbStatus
+            // btnTurnOff
             // 
-            this.pcbStatus.Location = new System.Drawing.Point(89, 20);
-            this.pcbStatus.Name = "pcbStatus";
-            this.pcbStatus.Size = new System.Drawing.Size(30, 52);
-            this.pcbStatus.TabIndex = 2;
-            this.pcbStatus.TabStop = false;
+            this.btnTurnOff.Location = new System.Drawing.Point(7, 20);
+            this.btnTurnOff.Name = "btnTurnOff";
+            this.btnTurnOff.Size = new System.Drawing.Size(75, 23);
+            this.btnTurnOff.TabIndex = 0;
+            this.btnTurnOff.Text = "Turn Off";
+            this.btnTurnOff.UseVisualStyleBackColor = true;
+            this.btnTurnOff.Click += new System.EventHandler(this.btnTurnOff_Click);
             // 
             // groupBox6
             // 
@@ -315,46 +331,6 @@
             this.groupBox6.TabIndex = 8;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Timers";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 30);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Timer Popup";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(129, 31);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 13);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Timer Colors";
-            // 
-            // nudPopup
-            // 
-            this.nudPopup.Location = new System.Drawing.Point(13, 57);
-            this.nudPopup.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.nudPopup.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudPopup.Name = "nudPopup";
-            this.nudPopup.Size = new System.Drawing.Size(64, 20);
-            this.nudPopup.TabIndex = 2;
-            this.nudPopup.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             // 
             // nudColors
             // 
@@ -378,6 +354,46 @@
             0,
             0});
             // 
+            // nudPopup
+            // 
+            this.nudPopup.Location = new System.Drawing.Point(13, 57);
+            this.nudPopup.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.nudPopup.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudPopup.Name = "nudPopup";
+            this.nudPopup.Size = new System.Drawing.Size(64, 20);
+            this.nudPopup.TabIndex = 2;
+            this.nudPopup.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(129, 31);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(65, 13);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Timer Colors";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(10, 30);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(67, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Timer Popup";
+            // 
             // groupBox7
             // 
             this.groupBox7.Controls.Add(this.btnShowCharts);
@@ -398,21 +414,61 @@
             this.btnShowCharts.UseVisualStyleBackColor = true;
             this.btnShowCharts.Click += new System.EventHandler(this.btnShowCharts_Click);
             // 
-            // button1
+            // groupBox8
             // 
-            this.button1.Location = new System.Drawing.Point(23, 259);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(159, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Delete All Tasks in Mainform";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.groupBox8.Controls.Add(this.btnShowExcel);
+            this.groupBox8.Controls.Add(this.btnWriteExcel);
+            this.groupBox8.Controls.Add(this.btnReadExcel);
+            this.groupBox8.Controls.Add(this.rtbExcel);
+            this.groupBox8.Location = new System.Drawing.Point(557, 229);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(200, 253);
+            this.groupBox8.TabIndex = 10;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Excel";
+            // 
+            // rtbExcel
+            // 
+            this.rtbExcel.Location = new System.Drawing.Point(7, 109);
+            this.rtbExcel.Name = "rtbExcel";
+            this.rtbExcel.Size = new System.Drawing.Size(187, 138);
+            this.rtbExcel.TabIndex = 0;
+            this.rtbExcel.Text = "";
+            // 
+            // btnReadExcel
+            // 
+            this.btnReadExcel.Location = new System.Drawing.Point(7, 20);
+            this.btnReadExcel.Name = "btnReadExcel";
+            this.btnReadExcel.Size = new System.Drawing.Size(75, 23);
+            this.btnReadExcel.TabIndex = 1;
+            this.btnReadExcel.Text = "Read Excel";
+            this.btnReadExcel.UseVisualStyleBackColor = true;
+            this.btnReadExcel.Click += new System.EventHandler(this.btnReadExcel_Click);
+            // 
+            // btnWriteExcel
+            // 
+            this.btnWriteExcel.Location = new System.Drawing.Point(7, 50);
+            this.btnWriteExcel.Name = "btnWriteExcel";
+            this.btnWriteExcel.Size = new System.Drawing.Size(75, 23);
+            this.btnWriteExcel.TabIndex = 2;
+            this.btnWriteExcel.Text = "Write Excel";
+            this.btnWriteExcel.UseVisualStyleBackColor = true;
+            // 
+            // btnShowExcel
+            // 
+            this.btnShowExcel.Location = new System.Drawing.Point(7, 80);
+            this.btnShowExcel.Name = "btnShowExcel";
+            this.btnShowExcel.Size = new System.Drawing.Size(75, 23);
+            this.btnShowExcel.TabIndex = 3;
+            this.btnShowExcel.Text = "Show Excel Chart";
+            this.btnShowExcel.UseVisualStyleBackColor = true;
             // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(769, 450);
+            this.ClientSize = new System.Drawing.Size(769, 494);
+            this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
@@ -427,18 +483,19 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbColorTwo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbColorOne)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pcbColorOne)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcbColorTwo)).EndInit();
             this.groupBox5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pcbStatus)).EndInit();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudPopup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudColors)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPopup)).EndInit();
             this.groupBox7.ResumeLayout(false);
+            this.groupBox8.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -477,5 +534,10 @@
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.Button btnShowCharts;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.Button btnShowExcel;
+        private System.Windows.Forms.Button btnWriteExcel;
+        private System.Windows.Forms.Button btnReadExcel;
+        private System.Windows.Forms.RichTextBox rtbExcel;
     }
 }

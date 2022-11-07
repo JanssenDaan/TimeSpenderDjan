@@ -43,14 +43,12 @@ namespace TimeSpenderDjan
         {
             tmrColor.Start();
             TimePassed = 0;
-            tmrSecondsPassed.Start();
 
             foreach (var t in settings.Tasks)
             {
                 cbxChoose.Items.Add(t.TaskName);
             }
 
-            
             tmrPopup.Interval = 1000;
             string x = File.ReadAllText(settings.FileName + ".txt");
             DoingList = Newtonsoft.Json.JsonConvert.DeserializeObject<ObservableCollection<What>>(x);
@@ -58,6 +56,8 @@ namespace TimeSpenderDjan
             {
                 lbxWhatDidIDo.Items.Add(what);
             }
+
+            tmrColor.Interval = settings.tmrColor;
         }
 
         private void tmrColor_Tick(object sender, EventArgs e)
@@ -82,7 +82,7 @@ namespace TimeSpenderDjan
         {
             if (settings.Status)
             {
-                PutListbox();
+                PutListbox(true);
             }
             else
             {
@@ -92,17 +92,17 @@ namespace TimeSpenderDjan
 
         private void cbxChoose_Leave(object sender, EventArgs e)
         {
-           // PutListbox();
+            PutListbox(false);
         }
 
-        public async void PutListbox()
+        public async void PutListbox(bool StandardTask)
         {
-            w = new What { WhatDoing = cbxChoose.Text , text = cbxChoose.Text + " " + w.Time, SecondsPassed = TimePassed};
-            tmrSecondsPassed.Stop();
+            w = new What { WhatDoing = cbxChoose.Text , 
+                text = cbxChoose.Text + " " + w.Time, 
+                SecondsPassed = settings.tmrPopup, StandardTask = StandardTask};
             DoingList.Add(w);
             lbxWhatDidIDo.Items.Add(w);
             this.Hide();
-            //this.WindowState = FormWindowState.Minimized;
             ntfDjan.Visible = true;
             tmr = settings.tmrPopup;
             tmrPopup.Start();
@@ -114,8 +114,6 @@ namespace TimeSpenderDjan
         private void ntfDjan_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             this.Show();
-            TimePassed = 0;
-            tmrSecondsPassed.Start();
         }
 
         private void tmrPopup_Tick(object sender, EventArgs e)
@@ -125,8 +123,6 @@ namespace TimeSpenderDjan
                 this.Show();
                 tmrPopup.Stop();
                 tmr = settings.tmrPopup;
-                TimePassed = 0;
-                tmrSecondsPassed.Start();
             }
             tmr--;
         }
@@ -141,6 +137,7 @@ namespace TimeSpenderDjan
             {
                 cbxChoose.Items.Add(t.TaskName);
             }
+            tmrColor.Interval = settings.tmrColor;
         }
         private void pcbSettings_Click(object sender, EventArgs e)
         {
@@ -159,18 +156,13 @@ namespace TimeSpenderDjan
         {
             tmrColor.Start();
             tmrPopup.Start();
-
-            
-            tmrSecondsPassed.Start();
         }
+
         public void ClearItems()
         {
             lbxWhatDidIDo.Items.Clear();
         }
 
-        private void tmrSecondsPassed_Tick(object sender, EventArgs e)
-        {
-            TimePassed++;
-        }
+        
     }
 }

@@ -28,34 +28,46 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.ViewChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.btnChange = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ViewChart)).BeginInit();
             this.SuspendLayout();
             // 
             // ViewChart
             // 
-            chartArea2.Name = "ChartArea1";
-            this.ViewChart.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.ViewChart.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            this.ViewChart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.ViewChart.Legends.Add(legend1);
             this.ViewChart.Location = new System.Drawing.Point(12, 12);
             this.ViewChart.Name = "ViewChart";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.ViewChart.Series.Add(series2);
-            this.ViewChart.Size = new System.Drawing.Size(776, 426);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "WhatDoing";
+            this.ViewChart.Series.Add(series1);
+            this.ViewChart.Size = new System.Drawing.Size(690, 426);
             this.ViewChart.TabIndex = 0;
             this.ViewChart.Text = "Chart";
+            // 
+            // btnChange
+            // 
+            this.btnChange.Location = new System.Drawing.Point(713, 25);
+            this.btnChange.Name = "btnChange";
+            this.btnChange.Size = new System.Drawing.Size(75, 23);
+            this.btnChange.TabIndex = 1;
+            this.btnChange.Text = "Change";
+            this.btnChange.UseVisualStyleBackColor = true;
+            this.btnChange.Click += new System.EventHandler(this.btnChange_Click);
             // 
             // ChartsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnChange);
             this.Controls.Add(this.ViewChart);
             this.Name = "ChartsForm";
             this.Text = "ChartsForm";
@@ -68,5 +80,6 @@
         #endregion
 
         private System.Windows.Forms.DataVisualization.Charting.Chart ViewChart;
+        private System.Windows.Forms.Button btnChange;
     }
 }

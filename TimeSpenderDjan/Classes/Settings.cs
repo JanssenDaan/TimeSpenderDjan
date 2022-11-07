@@ -18,6 +18,7 @@ namespace TimeSpenderDjan.Classes
         public string FileName { get; set; }
         public int tmrPopup { get; set; }
         public int tmrColor { get; set; }
+        public string ExcelFileName { get; set; }
         public bool Status { get; set; }
         public ObservableCollection<What> Whats = new ObservableCollection<What>();
         public ObservableCollection<Task> Tasks = new ObservableCollection<Task>();

@@ -10,16 +10,31 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TimeSpenderDjan.Classes;
+using System.Runtime.InteropServices;
+using Microsoft.Office.Interop.Excel;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace TimeSpenderDjan
 {
     public partial class Settings : Form
     {
         public ObservableCollection<Classes.Task> t = new ObservableCollection<Classes.Task>();
+
+        // excel
+        public string ExcelFileName;
+        Workbook xlwb;
+        Worksheet xlws;
+        object MisValue = System.Reflection.Missing.Value;
+        Range xlrng = null;
+        Excel.Application xlApp = null;
+        FileInfo fileinfo = null;
+
         public Settings()
         {
             InitializeComponent();
             this.ControlBox = false;
+            ExcelFileName = Form1.form.settings.ExcelFileName;
+            ExcelFileName = "C:\\Users\\daanm\\Downloads\\test.xlsx";
         }
 
         private void btnSaveSettings_Click(object sender, EventArgs e)
@@ -42,6 +57,7 @@ namespace TimeSpenderDjan
                 Tasks = t,
                 Status = Form1.form.settings.Status
                 };
+            
 
             string Json = Newtonsoft.Json.JsonConvert.SerializeObject(Form1.form.settings);
             File.WriteAllText("config.txt", Json);
@@ -49,7 +65,7 @@ namespace TimeSpenderDjan
             if (Form1.form.settings.Status == true)
             {
                 Form1.form.StartTimers();
-            }
+            }  
             else
             {
                 Form1.form.StopTimers();
@@ -144,8 +160,34 @@ namespace TimeSpenderDjan
         private void btnShowCharts_Click(object sender, EventArgs e)
         {
             var x = Form1.form.DoingList;
+
+            
+
             var y = Form1.form.settings.Tasks;
-            ChartsForm c = new ChartsForm(x, y);
+            var a = Form1.form.settings.Tasks;
+
+            //foreach (What w in x)
+            //{
+            //    foreach (Classes.Task t in y)
+            //    {
+            //        if (t.TaskName == w.WhatDoing)
+            //        {
+
+            //        }
+            //        else
+            //        {
+            //            a.Add(new Classes.Task { TaskName = w.WhatDoing });
+            //        }
+            //    }
+            //}
+            foreach (What what in x)
+            {
+                if (what.StandardTask == false)
+                {
+                    a.Add(new Classes.Task { TaskName = what.WhatDoing });
+                }
+            }
+            ChartsForm c = new ChartsForm(x, a);
             c.Show();
         }
 
@@ -156,6 +198,39 @@ namespace TimeSpenderDjan
             Form1.form.ClearItems();
             File.WriteAllText(Form1.form.settings.FileName + ".txt", Json);
 
+        }
+
+        private void btnReadExcel_Click(object sender, EventArgs e)
+        {
+
+            fileinfo = new FileInfo(ExcelFileName);
+            xlApp = new Excel.Application();
+            if (fileinfo.Extension == ".xlsx")
+            {
+                ExcelFileName = ExcelFileName.Remove(ExcelFileName.Length - 1);
+            }
+
+            ExcelFileName = "C:\\Users\\daanm\\Downloads\\test2.xls";
+
+            if (File.Exists(ExcelFileName))
+            {
+                xlwb = xlApp.Workbooks.Open(ExcelFileName);
+                xlws = xlwb.Sheets[1];
+                xlrng = xlws.UsedRange;
+            }
+            else
+            {
+                //xlwb = xlApp.Workbooks.Add(MisValue);
+                //xlws = (Worksheet)xlwb.Worksheets.get_Item(1);
+                //xlwb.SaveAs(ExcelFileName, XlFileFormat.xlWorkbookNormal, MisValue, MisValue, MisValue, MisValue, XlSaveAsAccessMode.xlExclusive, MisValue, MisValue, MisValue, MisValue, MisValue);
+                //xlrng = xlws.UsedRange;
+            }
+
+            if (xlrng.Cells[1,1] != null && xlrng[1,1].Value2 != null)
+            {
+                MessageBox.Show(xlrng.Cells[1,1].Value);
+            }
+            
         }
     }
 }
