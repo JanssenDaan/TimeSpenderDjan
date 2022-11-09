@@ -41,6 +41,7 @@
             this.pnl3 = new System.Windows.Forms.Panel();
             this.ntfDjan = new System.Windows.Forms.NotifyIcon(this.components);
             this.pcbSettings = new System.Windows.Forms.PictureBox();
+            this.ofdRead = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pcbSettings)).BeginInit();
             this.SuspendLayout();
             // 
@@ -130,6 +131,10 @@
             this.pcbSettings.TabStop = false;
             this.pcbSettings.Click += new System.EventHandler(this.pcbSettings_Click);
             // 
+            // ofdRead
+            // 
+            this.ofdRead.FileName = "openFileDialog1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -167,6 +172,7 @@
         private System.Windows.Forms.NotifyIcon ntfDjan;
         private System.Windows.Forms.PictureBox pcbSettings;
         public System.Windows.Forms.Timer tmrColor;
+        private System.Windows.Forms.OpenFileDialog ofdRead;
     }
 }
 

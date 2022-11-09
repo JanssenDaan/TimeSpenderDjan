@@ -61,10 +61,13 @@
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.btnShowCharts = new System.Windows.Forms.Button();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.rtbExcel = new System.Windows.Forms.RichTextBox();
-            this.btnReadExcel = new System.Windows.Forms.Button();
-            this.btnWriteExcel = new System.Windows.Forms.Button();
             this.btnShowExcel = new System.Windows.Forms.Button();
+            this.btnWriteExcel = new System.Windows.Forms.Button();
+            this.btnReadExcel = new System.Windows.Forms.Button();
+            this.rtbExcel = new System.Windows.Forms.RichTextBox();
+            this.ofdRead = new System.Windows.Forms.OpenFileDialog();
+            this.btnToObj = new System.Windows.Forms.Button();
+            this.toSortChart = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbColorTwo)).BeginInit();
@@ -416,6 +419,8 @@
             // 
             // groupBox8
             // 
+            this.groupBox8.Controls.Add(this.toSortChart);
+            this.groupBox8.Controls.Add(this.btnToObj);
             this.groupBox8.Controls.Add(this.btnShowExcel);
             this.groupBox8.Controls.Add(this.btnWriteExcel);
             this.groupBox8.Controls.Add(this.btnReadExcel);
@@ -427,13 +432,23 @@
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Excel";
             // 
-            // rtbExcel
+            // btnShowExcel
             // 
-            this.rtbExcel.Location = new System.Drawing.Point(7, 109);
-            this.rtbExcel.Name = "rtbExcel";
-            this.rtbExcel.Size = new System.Drawing.Size(187, 138);
-            this.rtbExcel.TabIndex = 0;
-            this.rtbExcel.Text = "";
+            this.btnShowExcel.Location = new System.Drawing.Point(7, 80);
+            this.btnShowExcel.Name = "btnShowExcel";
+            this.btnShowExcel.Size = new System.Drawing.Size(75, 23);
+            this.btnShowExcel.TabIndex = 3;
+            this.btnShowExcel.Text = "Show Excel Chart";
+            this.btnShowExcel.UseVisualStyleBackColor = true;
+            // 
+            // btnWriteExcel
+            // 
+            this.btnWriteExcel.Location = new System.Drawing.Point(7, 50);
+            this.btnWriteExcel.Name = "btnWriteExcel";
+            this.btnWriteExcel.Size = new System.Drawing.Size(75, 23);
+            this.btnWriteExcel.TabIndex = 2;
+            this.btnWriteExcel.Text = "Write Excel";
+            this.btnWriteExcel.UseVisualStyleBackColor = true;
             // 
             // btnReadExcel
             // 
@@ -445,23 +460,37 @@
             this.btnReadExcel.UseVisualStyleBackColor = true;
             this.btnReadExcel.Click += new System.EventHandler(this.btnReadExcel_Click);
             // 
-            // btnWriteExcel
+            // rtbExcel
             // 
-            this.btnWriteExcel.Location = new System.Drawing.Point(7, 50);
-            this.btnWriteExcel.Name = "btnWriteExcel";
-            this.btnWriteExcel.Size = new System.Drawing.Size(75, 23);
-            this.btnWriteExcel.TabIndex = 2;
-            this.btnWriteExcel.Text = "Write Excel";
-            this.btnWriteExcel.UseVisualStyleBackColor = true;
+            this.rtbExcel.Location = new System.Drawing.Point(7, 109);
+            this.rtbExcel.Name = "rtbExcel";
+            this.rtbExcel.Size = new System.Drawing.Size(187, 138);
+            this.rtbExcel.TabIndex = 0;
+            this.rtbExcel.Text = "";
             // 
-            // btnShowExcel
+            // ofdRead
             // 
-            this.btnShowExcel.Location = new System.Drawing.Point(7, 80);
-            this.btnShowExcel.Name = "btnShowExcel";
-            this.btnShowExcel.Size = new System.Drawing.Size(75, 23);
-            this.btnShowExcel.TabIndex = 3;
-            this.btnShowExcel.Text = "Show Excel Chart";
-            this.btnShowExcel.UseVisualStyleBackColor = true;
+            this.ofdRead.FileName = "openFileDialog1";
+            // 
+            // btnToObj
+            // 
+            this.btnToObj.Location = new System.Drawing.Point(98, 20);
+            this.btnToObj.Name = "btnToObj";
+            this.btnToObj.Size = new System.Drawing.Size(75, 23);
+            this.btnToObj.TabIndex = 4;
+            this.btnToObj.Text = "Conv To Obj";
+            this.btnToObj.UseVisualStyleBackColor = true;
+            this.btnToObj.Click += new System.EventHandler(this.btnToObj_Click);
+            // 
+            // toSortChart
+            // 
+            this.toSortChart.Location = new System.Drawing.Point(98, 50);
+            this.toSortChart.Name = "toSortChart";
+            this.toSortChart.Size = new System.Drawing.Size(86, 23);
+            this.toSortChart.TabIndex = 5;
+            this.toSortChart.Text = "To Sort Chart";
+            this.toSortChart.UseVisualStyleBackColor = true;
+            this.toSortChart.Click += new System.EventHandler(this.toSortChart_Click);
             // 
             // Settings
             // 
@@ -539,5 +568,8 @@
         private System.Windows.Forms.Button btnWriteExcel;
         private System.Windows.Forms.Button btnReadExcel;
         private System.Windows.Forms.RichTextBox rtbExcel;
+        private System.Windows.Forms.OpenFileDialog ofdRead;
+        private System.Windows.Forms.Button btnToObj;
+        private System.Windows.Forms.Button toSortChart;
     }
 }

@@ -13,13 +13,23 @@ using TimeSpenderDjan.Classes;
 using System.Runtime.InteropServices;
 using Microsoft.Office.Interop.Excel;
 using Excel = Microsoft.Office.Interop.Excel;
+using CsvHelper;
+using System.Globalization;
+using TimeSpenderDjan.Classes;
 
 namespace TimeSpenderDjan
 {
     public partial class Settings : Form
     {
         public ObservableCollection<Classes.Task> t = new ObservableCollection<Classes.Task>();
+        public ObservableCollection<Classes.Task> exTasks = new ObservableCollection<Classes.Task>();
 
+        public ObservableCollection<What> ExcelRead = new ObservableCollection<What>();
+        public SortableForm sortForm = new SortableForm();
+        string value1;
+        string value2;
+        bool value3;
+        string value4;
         // excel
         public string ExcelFileName;
         Workbook xlwb;
@@ -166,20 +176,7 @@ namespace TimeSpenderDjan
             var y = Form1.form.settings.Tasks;
             var a = Form1.form.settings.Tasks;
 
-            //foreach (What w in x)
-            //{
-            //    foreach (Classes.Task t in y)
-            //    {
-            //        if (t.TaskName == w.WhatDoing)
-            //        {
-
-            //        }
-            //        else
-            //        {
-            //            a.Add(new Classes.Task { TaskName = w.WhatDoing });
-            //        }
-            //    }
-            //}
+            
             foreach (What what in x)
             {
                 if (what.StandardTask == false)
@@ -202,35 +199,91 @@ namespace TimeSpenderDjan
 
         private void btnReadExcel_Click(object sender, EventArgs e)
         {
+            ExcelReadClass excelFile = new ExcelReadClass();
+            string preview = "";
 
-            fileinfo = new FileInfo(ExcelFileName);
-            xlApp = new Excel.Application();
-            if (fileinfo.Extension == ".xlsx")
+            var dialogResult = ofdRead.ShowDialog();
+
+            if (dialogResult != DialogResult.OK || ofdRead.FileName == null)
             {
-                ExcelFileName = ExcelFileName.Remove(ExcelFileName.Length - 1);
+                return;
+            }
+            var data = excelFile.readFileData(ofdRead.FileName);
+
+            for (int i = 0; i < data.Count; i += 4)
+            {
+                preview += string.Format("{0}\n{1}\n{2}\n{3}\n", data[i], data[i + 1], data[i + 2], data[i + 3]);
+
+                // Convert the strings back into their intended datatype
+                bool isDefault = data[i + 2] == "WAAR";
+                DateTime date = DateTime.FromOADate(double.Parse(data[i + 3]));
             }
 
-            ExcelFileName = "C:\\Users\\daanm\\Downloads\\test2.xls";
+            rtbExcel.Text = preview;
 
-            if (File.Exists(ExcelFileName))
-            {
-                xlwb = xlApp.Workbooks.Open(ExcelFileName);
-                xlws = xlwb.Sheets[1];
-                xlrng = xlws.UsedRange;
-            }
-            else
-            {
-                //xlwb = xlApp.Workbooks.Add(MisValue);
-                //xlws = (Worksheet)xlwb.Worksheets.get_Item(1);
-                //xlwb.SaveAs(ExcelFileName, XlFileFormat.xlWorkbookNormal, MisValue, MisValue, MisValue, MisValue, XlSaveAsAccessMode.xlExclusive, MisValue, MisValue, MisValue, MisValue, MisValue);
-                //xlrng = xlws.UsedRange;
-            }
+            excelFile.Close();
+        }
 
-            if (xlrng.Cells[1,1] != null && xlrng[1,1].Value2 != null)
+        private void btnToObj_Click(object sender, EventArgs e)
+        {
+            int i = 1; ;
+            foreach (string r in rtbExcel.Lines)
             {
-                MessageBox.Show(xlrng.Cells[1,1].Value);
+                switch (i)
+                {
+                    case 1:
+                        value1 = r;
+                        break;
+                    case 2:
+                        value2 = r;
+                        break;
+                    case 3:
+                        value3 = Convert.ToBoolean(r);
+                        break;
+                    case 4:
+                        value4 = r;
+                        ExcelRead.Add(new What { WhatDoing = value1, SecondsPassed = Convert.ToInt32(value2), StandardTask = value3, Time = Convert.ToInt32(value4) });
+
+                        break;
+                    case 5:
+
+                        
+                        break;
+                    
+                        
+                }
+                if (i == 4)
+                {
+                    i = 1;
+                }
+                else
+                {
+                    i++;
+                }
             }
-            
+        }
+
+        private void toSortChart_Click(object sender, EventArgs e)
+        {
+            //CreateTaskListFromExcelTasks
+            foreach (What w in ExcelRead)
+            {
+                Classes.Task t = new Classes.Task { TaskName = w.WhatDoing };
+                if (exTasks.Contains(t))
+                {
+
+                }
+                else
+                {
+                    exTasks.Add(new Classes.Task
+                    {
+                        TaskName = w.WhatDoing
+                    });
+                }
+            }
+            sortForm = new SortableForm(whats: ExcelRead, tasks: exTasks);
+            sortForm.Show();
         }
     }
 }
+
